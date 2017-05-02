@@ -11,75 +11,28 @@ Comandos::~Comandos()
 
 void Comandos::info(int element)
 {
-	std::string element_wiki(jugA.getStringElement(element));
-	std::string url_wiki("https://en.wikipedia.org/wiki/" + element_wiki);
+	std::string url;
+	std::string info = jugA.getStringElement(element);
 
-	char *url_arreglado = new char[url_wiki.length()];
-	strcpy_s(url_arreglado, strlen(url_arreglado), url_wiki.c_str());
-
-	ShellExecuteA(nullptr, "open", url_arreglado, nullptr, nullptr, SW_SHOWNORMAL);
+	url = "https://en.wikipedia.org/wiki/" + info;
+	ShellExecuteA(nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }
 
 void Comandos::help()
 {
-	std::cout << "Lista de comandos : " << std::endl;
-	std::cout << "ADD + NUM_ELEMENTO :  Añade un elemento del inventario especificado por el numero" << std::endl;
-	std::cout << "ADD BASICS : Añade todos los elementos principales al inventario" << std::endl;
-	std::cout << "DELETE + NUM_ELEMENTO : Elimina un elemento del inventario especificado por el numero" << std::endl;
-	std::cout << "INFO + NUM_ELEMENTO : Accede a Wikipedia para información del elemento especificado por numero" << std::endl;
-	std::cout << "HELP : Muestra los comandos del juego" << std::endl;
-	std::cout << "SORT : Ordena todos los elementos del inventario" << std::endl;
-	std::cout << "CLEAN : Elimina todos los elementos del invetario" << std::endl;
+	std::cout << "-------------------" << std::endl;
+	std::cout << "FULLENTI ALCHEMIST" << std::endl;
+	std::cout << "-------------------" << std::endl;
+	std::cout << "- Enter the word a 'add'. You can choose the 4 elements (basics) or an especific element (number)" << std::endl;
+	std::cout << "- Enter the word 'delete' and the number of an element to erase it from your list." << std::endl;
+	std::cout << "- Enter the word 'info' and the number of an element to get information about it in the explorer." << std::endl;
+	std::cout << "- Enter the word 'sort' to sort by alphabetical order the elements in the list." << std::endl;
+	std::cout << "- Enter the word 'clean' to delete all the instances of all the repeated elements" << std::endl;
+	std::cout << "- Enter the word 'combine' to combine two elements." << std::endl;
+	std::cout << "- Enter the word 'help' to show this tutorial." << std::endl;
+	system("pause");
 
 }
-
-void Comandos::sort()
-{
-	bool flag_orden(true);
-	for (std::vector<std::string>::iterator it(jugA.getInv().begin()+1); it != jugA.getInv().end(); it++)
-	{
-		flag_orden = false;
-		for (std::vector<std::string>::iterator it2(jugA.getInv().begin()); it2 != jugA.getInv().end(); it2++)
-		{
-			if (*(it2 + 1)<*it)
-			{
-				std::string a = (*it);
-				*it = *(it + 1);
-				*(it + 1) = a;
-				flag_orden = true;
-			}
-		}
-	}
-}
-
-void Comandos::clean()
-{
-	std::vector<std::string> a;
-	bool flag_clean(true);
-
-	for (std::vector<std::string>::iterator it(jugA.getInv().begin()); it != jugA.getInv().end(); it++)
-	{
-		for (std::vector<std::string>::iterator it2(jugA.getInv().begin()); it2 != jugA.getInv().end(); it2++)
-		{
-			if (*it == *it2)
-			{
-				flag_clean = true;
-			}
-		}
-		if (flag_clean == true)
-		{
-			jugA.getInv().erase(it);
-			flag_clean = false;
-			it--;
-		}
-		else
-		{
-			a.push_back(*it);
-		}
-	}
-}
-
-
 
 std::string Comandos::getCombinationResult(std::string elem1, std::string elem2)
 {
@@ -94,6 +47,6 @@ std::string Comandos::getCombinationResult(std::string elem1, std::string elem2)
 		return dataA.mymap.find(p2)->second;
 	}
 	else {
-		return "Not a Combination";
+		return "Fail";
 	}
 }

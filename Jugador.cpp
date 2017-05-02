@@ -27,7 +27,14 @@ void Jugador::add(int num)
 
 void Jugador::Delete(int i)
 {
-	inventario.erase(inventario.begin() + i);
+	if ((inventario.begin() + i) >= inventario.end()) {
+		std::cout << "No elements in that position." << std::endl; 
+		system("pause");
+	}
+	else
+	{
+		inventario.erase(inventario.begin() + i);
+	}
 }
 
 void Jugador::setScore(int n)
@@ -50,10 +57,10 @@ void Jugador::modListaJugador(std::string elemento)
 	listajugador.push_back(elemento);
 }
 
-std::vector<std::string> Jugador::getListaJugador()
+/*std::vector<std::string> Jugador::getListaJugador()
 {
 	return listajugador;
-}
+}*/
 
 std::string Jugador::getStringElement(int num)
 {
@@ -67,4 +74,15 @@ void Jugador::seeElementsInv()
 	{
 		std::cout << i + 1 << ".-  " << inventario[i] << std::endl;
 	}
+}
+
+void Jugador::sortElements()
+{
+	std::sort(inventario.begin(), inventario.end());
+}
+
+void Jugador::cleanElements()
+{
+	sortElements();
+	inventario.erase(std::unique(inventario.begin(), inventario.end()), inventario.end());
 }
