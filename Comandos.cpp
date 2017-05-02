@@ -78,3 +78,22 @@ void Comandos::clean()
 		}
 	}
 }
+
+
+
+std::string Comandos::getCombinationResult(std::string elem1, std::string elem2)
+{
+	
+	std::pair<std::string, std::string> p = std::make_pair(elem1, elem2);
+	std::pair<std::string, std::string> p2 = std::make_pair(elem2, elem1);
+
+	if (dataA.mymap.find(p) != dataA.mymap.end()) {
+		return dataA.mymap.find(p)->second;
+	}
+	else if (dataA.mymap.find(p2) != dataA.mymap.end()) {
+		return dataA.mymap.find(p2)->second;
+	}
+	else {
+		return "Not a Combination";
+	}
+}

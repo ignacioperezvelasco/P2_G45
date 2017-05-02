@@ -48,12 +48,12 @@ int main()
 	system("pause");
 	system("cls");
 
-	//CREAMOS LAS CLASES QUE NECESITAMOS
+
 	DataM data(url_elements);
 	Jugador jug;
 	Comandos com(data, jug);
 
-	while (true) {
+	/*while (true) {
 
 		c = getch();
 		if (c == 27)
@@ -95,7 +95,15 @@ int main()
 		{
 			com.sort();
 		}
+	}*/
+	// unordered_map::begin/end example
+
+		
+	for (auto it = data.mymap.begin(); it != data.mymap.end(); ++it) {
+		std::cout <<it->second<<"="<< it->first.first<< "+" << it->first.second<< std::endl;//" " << ":" << it->second;
+		
 	}
+	system("pause");
 
 
 

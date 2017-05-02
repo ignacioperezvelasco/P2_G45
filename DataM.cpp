@@ -9,8 +9,6 @@
 
 DataM::DataM(std::string URL)
 {
-	size_t pos;
-	size_t pos1;
 	int igual;
 	int suma;
 	int counter = 0;
@@ -28,17 +26,14 @@ DataM::DataM(std::string URL)
 
 	while (std::getline(fichero, aux))
 	{
-
 		igual = aux.find("=");
 		suma = aux.find("+");
 
-		palabras[0] = aux.substr(0, igual);
-		palabras[1] = aux.substr(igual + 2, suma - 2);
+		palabras[0] = aux.substr(0, igual - 1);
+		palabras[1] = aux.substr(igual + 2, (suma - 3) - igual);
 		palabras[2] = aux.substr(suma + 2);
-		mymap[palabras[0]] = { palabras[1],palabras[2] };
 
-
-
+		mymap[{palabras[1], palabras[2]}] = { palabras[0] };
 	}
 
 	fichero.close();

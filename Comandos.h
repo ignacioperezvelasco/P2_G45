@@ -16,6 +16,7 @@ public:
 	void sort();									//METODO PARA ORDENAR LOS ELEMENTOS DEL INVENTARIO
 	void clean();									//METODO PARA ELIMINAR TODOS LOS ELEMENTOS DEL INVENTARIO
 
+	std::string getCombinationResult(std::string elem1, std::string elem2);			//METODO PARA LA CORRECTA COMBINACION DE LOS ELEMENTOS
 private:
 	DataM &dataA;
 	Jugador &jugA;
