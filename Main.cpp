@@ -22,6 +22,8 @@ int main()
 	int user_Input_ELEMENT1;
 	int user_Input_ELEMENT2;
 	int user_Input_ELEMENT3;
+	std::vector<std::string> size;
+
 	std::string url_elements("elements.dat");
 
 	std::cout << "-------------------" << std::endl;
@@ -40,6 +42,8 @@ int main()
 
 	DataM data(url_elements);
 	Jugador jug;
+	size = jug.getInv();
+
 	Comandos com(data, jug);
 
 	while (true) {
@@ -70,12 +74,20 @@ int main()
 		{
 			std::cout << "Put the number of the element: " << std::endl;
 			std::cin >> input2;
+			/*if (jug.size()<(std::stoi(input2) - 1) || 0>=(std::stoi(input2) - 1))
+			{
+				std::cout << "impossible" << std::endl;
+			}
+			else {
+				jug.Delete(std::stoi(input2) - 1);
+			}*/
 			jug.Delete(std::stoi(input2) - 1);
 		}
 		else if (input == "info")
 		{
 			std::cout << "Put the number of the element: " << std::endl;
 			std::cin >> input2;
+			
 			com.info(std::stoi(input2) - 1);
 		}
 		else if (input == "clean") {

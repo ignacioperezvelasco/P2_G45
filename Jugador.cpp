@@ -22,12 +22,27 @@ void Jugador::addBasics()
 
 void Jugador::add(int num)
 {
-	inventario.push_back(this->getStringElement(num));
+	if (num <= 0)
+	{
+		std::cout << "No elements in that position." << std::endl;
+		system("pause");
+	}
+	else if ((size() <num ))
+	{
+		std::cout << "No elements in that position." << std::endl;
+		system("pause");
+	}
+	else { inventario.push_back(this->getStringElement(num)); }
 }
 
 void Jugador::Delete(int i)
 {
-	if ((inventario.begin() + i) >= inventario.end()) {
+	if (i <= 0) 
+	{
+		std::cout << "No elements in that position." << std::endl;
+		system("pause");
+	}
+	else if ((size() <i)) {
 		std::cout << "No elements in that position." << std::endl; 
 		system("pause");
 	}
@@ -85,4 +100,20 @@ void Jugador::cleanElements()
 {
 	sortElements();
 	inventario.erase(std::unique(inventario.begin(), inventario.end()), inventario.end());
+}
+
+int Jugador::size() 
+{
+	int size=0;
+
+	std::vector<std::string> aux = getInv();
+
+	do
+	{
+		size++;
+		aux.pop_back();
+
+	} while (!aux.empty());
+
+	return size;
 }

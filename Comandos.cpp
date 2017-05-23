@@ -11,11 +11,23 @@ Comandos::~Comandos()
 
 void Comandos::info(int element)
 {
-	std::string url;
-	std::string info = jugA.getStringElement(element);
+	if (element <= 0)
+	{
+		std::cout << "No elements in that position." << std::endl;
+		system("pause");
+	}
+	else if ((jugA.size() <element))
+	{
+		std::cout << "No elements in that position." << std::endl;
+		system("pause");
+	}
+	else {
+		std::string url;
+		std::string info = jugA.getStringElement(element);
 
-	url = "https://en.wikipedia.org/wiki/" + info;
-	ShellExecuteA(nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
+		url = "https://en.wikipedia.org/wiki/" + info;
+		ShellExecuteA(nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
+	}
 }
 
 void Comandos::help()

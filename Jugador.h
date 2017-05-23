@@ -31,4 +31,5 @@ public:
 	void seeElementsInv();							//METODO PARA PRINTAR POR PANTALLA TODOS LOS ELEMENTOS DEL JUGADOR
 	void sortElements();							//METODO PARA ORDENAR LOS ELEMENTOS DEL INVENTARIO
 	void cleanElements();							//METODO PARA ELIMINAR TODOS LOS ELEMENTOS DEL INVENTARIO
+	int size();
 };
